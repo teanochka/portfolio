@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Stars</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="section">
+    <div>
+      <p class="p1">Hi! My name is Tiana.</p>
+      <p class="animated-text p1">I'm a beginner web developer</p>
+    </div>
+    <div id="scrollButton" onclick="scrollToSection()" class="round-button" style="--clr:#3beef8">Scroll Down</div>
+  </div>
+
+  <div id="targetSection" class="section">
+
+    <div class="stars-wrapper"></div>
+
+    <div class="crop-floor">
+      <div class="grid-container">
+        <div class="blur-line"></div>
+      </div>
+    </div>
+
+    <div class="circle">
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+
+    <p class="p1"> coming soon... </p>
+
+  </div>
+
+  <script>
+    function getRandomPosition(containerSize) {
+      return {
+        x: Math.random() * 100,
+        y: Math.random() * 100
+      };
+    }
+
+    function getRandomSize(min, max) {
+      return Math.random() * 5;
+    }
+
+    function createStar(container) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const containerSize = container.getBoundingClientRect();
+      const position = getRandomPosition(containerSize);
+      const size = getRandomSize(5, 20);
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${position.x}%`;
+      star.style.top = `${position.y}%`;
+      container.appendChild(star);
+    }
+
+    const container = document.querySelector('.stars-wrapper');
+    const numStars = 200;
+
+    for (let i = 0; i < numStars; i++) {
+      createStar(container);
+    }
+  </script>
+  <script>
+    function scrollToSection() {
+      const targetElement = document.getElementById('targetSection');
+
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>

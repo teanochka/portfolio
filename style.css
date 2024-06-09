@@ -1,0 +1,182 @@
+body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+.section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #030418;
+  }
+
+  .p1 {
+    text-align: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+    letter-spacing: 3px;
+    color: #3beef8;
+  }
+
+  /* звездное небо */
+  .stars-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .star {
+    opacity: 1;
+    background-color: white;
+    animation: twinkle 4s infinite ease-in-out;
+    position: absolute;
+  }
+
+  .star:nth-child(2n) {
+    opacity: 0.8;
+    animation-delay: calc(4s * -0.33);
+  }
+
+  .star:nth-child(3n) {
+    opacity: 0.6;
+    animation-delay: calc(4s * -0.66);
+  }
+
+  @keyframes twinkle {
+    25% {
+      opacity: 25%;
+    }
+  }
+
+    /* ретровейв дорога */
+  .crop-floor {
+    position: absolute;
+    bottom: 0;
+    height: 60vh;
+    width: 250vw;
+    perspective: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  .grid-container {
+    width: 250vw;
+    height: 50vh;
+    background-image:
+      linear-gradient(to right, #da05ff 3px, transparent 1px),
+      linear-gradient(to bottom, #da05ff 3px, transparent 1px);
+    background-size: 50px 50px;
+    background-color: #030418;
+    animation: moveGrid 0.5s linear infinite;
+    transform: rotateX(50deg);
+    transform-origin: center;
+  }
+
+  .blur-line {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 2px;
+    background: #da05ff;
+    box-shadow: 0 0 30px 30px rgba(218, 5, 255, 0.5);
+  }
+
+  @keyframes moveGrid {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: 0 50px;
+    }
+  }
+
+    /* солнце */
+  .circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(#f6b816, #da05ff);
+    position: absolute;
+    top: 12.5%;
+    animation: pulse 3s linear infinite;
+    overflow: hidden;
+  }
+
+  .line {
+    position: absolute;
+    bottom: 10%;
+    height: 10%;
+    width: 100%;
+  }
+
+  .line:nth-child(1) {
+    border-top: 3px solid #030418;
+    border-bottom: 5px solid #030418;
+  }
+
+  .line:nth-child(2) {
+    bottom: 35%;
+    border-top: 1px solid #030418;
+    border-bottom: 2px solid #030418;
+  }
+
+  @keyframes pulse {
+
+    0%,
+    100% {
+      box-shadow: 0em 0em 1em #ee6c63;
+    }
+
+    50% {
+      box-shadow: 0em 0em 5em #ee6c63;
+    }
+  }
+
+  /* кнопка */
+  .round-button {
+    position: absolute;
+    background-color: #030418;
+    bottom: 15%;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "Lucida Console", "Courier New", monospace;
+    padding: 10px 30px;
+    border: 2px solid var(--clr);
+    color: var(--clr);
+    transition: 0.5s;
+  }
+
+  .round-button:hover {
+    background-color: var(--clr);
+    color: #030418;
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px var(--clr);
+  }
+
+  /* анимация печати */
+  .animated-text {
+  overflow: hidden;
+  border-right: 2px solid white;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end) forwards, blink-caret 0.75s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent }
+  50% { border-color: white }
+}
